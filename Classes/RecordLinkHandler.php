@@ -15,6 +15,7 @@ namespace Cobweb\Linkhandler;
  */
 
 use Cobweb\Linkhandler\Browser\RecordBrowser;
+use Cobweb\Linkhandler\HappyFeetLinkHandlerAdapter;
 use Psr\Http\Message\ServerRequestInterface;
 use Cobweb\Linkhandler\Tree\View\RecordBrowserPageTreeView;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -96,6 +97,8 @@ class RecordLinkHandler extends AbstractLinkHandler implements LinkHandlerInterf
         }
 
         try {
+            $linkParts['url'] = HappyFeetLinkHandlerAdapter::fixLinkHandlerUrl($linkParts['url']);
+
             $isRecordReference = StringUtility::beginsWith($linkParts['url'], 'record:' . $this->identifier . ':');
         } catch (\Exception $e) {
             return false;

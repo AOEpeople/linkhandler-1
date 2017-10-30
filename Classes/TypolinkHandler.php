@@ -16,6 +16,7 @@ namespace Cobweb\Linkhandler;
 
 use Cobweb\Linkhandler\Exception\MissingConfigurationException;
 use Cobweb\Linkhandler\Exception\RecordNotFoundException;
+use Cobweb\Linkhandler\HappyFeetLinkHandlerAdapter;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -122,6 +123,10 @@ class TypolinkHandler implements SingletonInterface
 
         // Extract the link parts (i.e. parameter, target, class, title and additional parameters
         $this->linkParameters = GeneralUtility::makeInstance(TypoLinkCodecService::class)->decode($linkParameters);
+
+        $this->linkParameters['url'] = HappyFeetLinkHandlerAdapter::fixLinkHandlerUrl($this->linkParameters['url']);
+        $linkHandlerValue = HappyFeetLinkHandlerAdapter::fixLinkHandlerValue($linkHandlerValue);
+
         // Add information from the parameter
         $linkParameterParts = explode(':', $linkHandlerValue);
         $this->configurationKey = $linkParameterParts[0] . '.';

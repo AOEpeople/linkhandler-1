@@ -14,6 +14,8 @@ namespace Cobweb\Linkhandler;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Cobweb\Linkhandler\HappyFeetLinkHandlerAdapter;
+
 /**
  * Class called by the signal slot dispatcher in the SoftReferenceIndex.
  *
@@ -34,6 +36,8 @@ class SoftReferenceHandler
      */
     public function getTypoLinkParts($linkHandlerFound, $finalTagParts, $linkHandlerKeyword, $linkHandlerValue)
     {
+        $linkHandlerValue = HappyFeetLinkHandlerAdapter::fixLinkHandlerValue($linkHandlerValue);
+        $linkHandlerKeyword = HappyFeetLinkHandlerAdapter::fixLinkHandlerKeyword($linkHandlerKeyword);
 
         if ($linkHandlerKeyword === 'record') {
             $finalTagParts['LINK_TYPE'] = 'linkhandler';
@@ -100,6 +104,8 @@ class SoftReferenceHandler
      */
     protected function setTypoLinkPartsElementForLinkhandler($url, &$elements, $index, $tokenID, $content)
     {
+        $url = HappyFeetLinkHandlerAdapter::fixLinkHandlerUrl($url);
+
         $referenceParts = explode(':', $url);
         $elements[$tokenID . ':' . $index]['subst'] = array(
             'type' => 'db',

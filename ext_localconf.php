@@ -5,6 +5,7 @@ if (!defined('TYPO3_MODE')) {
 
 // Add typolink handler for "record" links
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_content.php']['typolinkLinkHandler']['record'] = \Cobweb\Linkhandler\TypolinkHandler::class;
+\Cobweb\Linkhandler\HappyFeetLinkHandlerAdapter::addTypolinkHandlerForHappyFeetLinks();
 
 // Register signal slots
 /** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */

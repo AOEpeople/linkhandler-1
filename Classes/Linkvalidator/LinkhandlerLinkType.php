@@ -15,6 +15,7 @@ namespace Cobweb\Linkhandler\Linkvalidator;
  */
 
 use Cobweb\Linkhandler\Domain\Model\RecordLink;
+use Cobweb\Linkhandler\HappyFeetLinkHandlerAdapter;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Linkvalidator\Linktype\AbstractLinktype;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -167,6 +168,7 @@ class LinkhandlerLinkType extends AbstractLinktype
         if (strtolower(substr($value['tokenValue'], 0, 7)) === 'record:') {
             $type = 'tx_linkhandler';
         }
+        $type = HappyFeetLinkHandlerAdapter::fixLinkHandlerType($value['tokenValue'], $type);
         return $type;
     }
 
