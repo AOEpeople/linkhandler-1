@@ -1,6 +1,6 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
     'title' => 'Generic record link handler',
     'description' => 'Create links to any record (e.g. news)',
     'category' => 'plugin',
@@ -12,14 +12,14 @@ $EM_CONF[$_EXTKEY] = array(
     'author' => 'Francois Suter',
     'author_email' => 'typo3@cobweb.ch',
     'author_company' => 'Cobweb Development Sarl',
-    'constraints' => array(
-        'depends' => array(
-            'typo3' => '7.6.1-7.9.99',
-        ),
-        'conflicts' => array(
+    'constraints' => [
+        'depends' => [
+            'typo3' => '7.6.1-8.7.99',
+        ],
+        'conflicts' => [
             'ch_rterecords' => '',
             'tinymce_rte' => '',
-        ),
-        'suggests' => array(),
-    ),
-);
+        ],
+        'suggests' => [],
+    ],
+];
