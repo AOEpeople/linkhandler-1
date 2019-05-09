@@ -77,7 +77,7 @@ class UriBuilderText extends \TYPO3\CMS\Core\Tests\FunctionalTestCase
 
         /** @var \TYPO3\CMS\Core\TimeTracker\TimeTracker $timeTracker */
         $timeTracker = $this->getMock('TYPO3\\CMS\\Core\\TimeTracker\\TimeTracker');
-        $GLOBALS['TT'] = $timeTracker;
+        $timeTracker->start();
 
         /** @var \TYPO3\CMS\Frontend\Page\PageRepository $pageRepository */
         $pageRepository = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Page\PageRepository');
