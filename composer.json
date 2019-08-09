@@ -27,5 +27,10 @@
   "replace": {
     "linkhandler": "self.version",
     "typo3-ter/linkhandler": "self.version"
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms"
+    }
   }
 }
